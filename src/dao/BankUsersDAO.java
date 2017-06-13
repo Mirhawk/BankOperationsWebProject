@@ -38,7 +38,7 @@ public class BankUsersDAO {
 		ResultSet resultSet = preparedStatement.executeQuery();
 		if(resultSet.next())
 		{
-			return new LoginPojo(resultSet.getInt(1), userName, Password, resultSet.getString(2));
+			return new LoginPojo(resultSet.getInt(1), userName, resultSet.getString(2));
 		}
 		return null;
 	}
@@ -59,7 +59,7 @@ public class BankUsersDAO {
 			ResultSet resultSet = idStatement.executeQuery(idQuery);
 			if(resultSet.next())
 			{
-				return new LoginPojo(resultSet.getInt(1), userName, Password, emailID); 
+				return new LoginPojo(resultSet.getInt(1), userName, emailID); 
 			}
 		}
 		return null;

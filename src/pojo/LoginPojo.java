@@ -36,20 +36,14 @@ public class LoginPojo {
 	}
 
 
-	public String getPassword() {
-		return password;
-	}
-
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
 
-	public LoginPojo(int userID, String userName, String password, String emailID) {
+	public LoginPojo(int userID, String userName, String emailID) {
 		this.userID = userID;
 		this.userName = userName;
-		this.password = password;
 		this.emailID = emailID;
 	}
 	
