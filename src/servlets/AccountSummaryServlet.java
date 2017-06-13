@@ -58,7 +58,7 @@ public class AccountSummaryServlet extends HttpServlet{
 					pw.print("<input type='submit' value='Close A/C' formaction='closeAcc'>");
 				pw.print("</td>");
 				pw.print("<td>");
-					pw.print("<input type='submit' value='Create A/C' formaction='createAcc'>");
+					pw.print("<input type='submit' value='Create A/C' formaction='CreateAccount.html'>");
 				pw.print("</td>");
 				pw.print("<td>");
 					pw.print("<input type='submit' name='transacBtn' value='Withdraw'>");

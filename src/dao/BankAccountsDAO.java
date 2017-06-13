@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import pojo.BankAccountsPOJO;
@@ -80,5 +81,25 @@ public class BankAccountsDAO {
 			return "Account balance updated";
 		}
 		return null;	
+	}
+	
+	public String createAccount(int customerID, String accountType, double accountBalance) throws SQLException {
+		String createAccountSQLQuery = "INSERT INTO bank_accounts (id,type,bal) VALUES (?,?,?)";
+		
+		PreparedStatement preparedStatement = connection.prepareStatement(createAccountSQLQuery);
+		preparedStatement.setInt(1, customerID);
+		preparedStatement.setString(2, accountType);
+		preparedStatement.setDouble(3, accountBalance);
+		
+		int rowsAffectedCount = preparedStatement.executeUpdate();
+		
+		if(rowsAffectedCount == 1)
+		{
+			Statement statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery("SELECT @@IDENTITY");
+			if(resultSet.next())
+				return "Account created with ID "+resultSet.getInt(1);
+		}
+		return "Error in creating account!";
 	}
 }
